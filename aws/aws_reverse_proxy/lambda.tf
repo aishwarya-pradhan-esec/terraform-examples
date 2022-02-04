@@ -48,6 +48,9 @@ resource "aws_lambda_function" "viewer_request" {
   runtime          = "nodejs8.10"
   publish          = true                                                        # because: error creating CloudFront Distribution: InvalidLambdaFunctionAssociation: The function ARN must reference a specific function version. (The ARN must end with the version number.)
   tags             = "${var.tags}"
+  tracing_config {
+    mode = "PassThrough"
+  }
 }
 
 resource "aws_lambda_function" "viewer_response" {
