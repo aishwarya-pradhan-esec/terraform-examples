@@ -43,8 +43,9 @@ resource "aws_instance" "this" {
       "rm /home/${var.ssh_username}/provision-swap.sh",
     ]
   }
-  ebs_optimized = true
-  monitoring = true
+  *_block_device {
+    encrypted = true
+  }
 }
 
 # Attach the separate data volume to the instance, if so configured
