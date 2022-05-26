@@ -58,6 +58,8 @@ resource "aws_instance" "Kafka-Client-EC2-Instance" {
       "Name", "Kafka-Client-EC2-Instance"
     )
   )
+  monitoring = true
+  ebs_optimized = true
 }
 
 output "IP" {

@@ -42,6 +42,7 @@ module "version" {
 resource "google_storage_bucket" "code" {
   name     = "${local.project}_code"
   location = "EU"
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket_object" "config_file" {

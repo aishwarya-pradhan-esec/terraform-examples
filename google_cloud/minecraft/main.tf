@@ -104,7 +104,6 @@ resource "google_compute_instance" "minecraft" {
 
   network_interface {
     network = google_compute_network.minecraft.name
-    access_config {
       nat_ip = google_compute_address.minecraft.address
     }
   }

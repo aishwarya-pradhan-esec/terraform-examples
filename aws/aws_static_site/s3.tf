@@ -24,6 +24,38 @@ resource "aws_s3_bucket" "this" {
   }
 }
 
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
+  bucket = aws_s3_bucket.this.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "AES256"
+    }
+  }
+}
+
+
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
+  bucket = aws_s3_bucket.this.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "aws:kms"
+    }
+  }
+}
+
+
+resource "aws_s3_bucket_versioning" "this" {
+  bucket = aws_s3_bucket.this.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 # Use a bucket policy (instead of the simpler acl = "public-read") so we don't need to always remember to upload objects with:
 # $ aws s3 cp --acl public-read ...
 # https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
