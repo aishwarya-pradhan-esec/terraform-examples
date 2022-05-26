@@ -4,9 +4,13 @@ resource "google_sql_database_instance" "camunda-db" {
   region           = local.config.region
 
   settings {
+    backup_configuration {
+      enabled = true
+    }
     # Very small instance for testing.
     tier = "db-f1-micro"
     ip_configuration {
+      require_ssl = true
         ipv4_enabled = true
     }
   }

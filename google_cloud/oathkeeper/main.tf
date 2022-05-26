@@ -47,6 +47,7 @@ resource "google_storage_bucket" "config" {
   name               = "${local.project}_${local.region}_oathkeeper"
   location           = local.location
   bucket_policy_only = true
+   uniform_bucket_level_access = true
 }
 
 # rules for service
