@@ -1,0 +1,15 @@
+- name: Nix Shell
+  # You may pin to the exact commit or the version.
+  # uses: workflow/nix-shell-action@0a573af0eac8ee96a41b2b029576afca28a1031c
+  uses: workflow/nix-shell-action@v3.2.1
+  with:
+    # Interpreter to use in the nix shell shebang
+    interpreter: # default is bash
+    # Comma-separated list of packages to pre-install in your shell. Defaults to simply "bash". Cannot be used together with the flakes option
+    packages: # optional, default is bash
+    # Comma-separated list of fully qualified flakes to pre-install in your shell. Use either packages or flakes. Cannot be used together with the packages option
+    flakes: # optional
+    # The actual script to execute in the shell
+    script: 
+    # Execute the script inside the specified working directory instead of the repository root. Example: path/to/dir
+    working-directory: # optional
